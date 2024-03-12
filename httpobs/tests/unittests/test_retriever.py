@@ -1,4 +1,3 @@
-import random
 import string
 from unittest import TestCase
 
@@ -6,11 +5,12 @@ import requests
 
 from httpobs.scanner.retriever import get_duplicate_header_values, retrieve_all
 from httpobs.tests.utils import empty_requests
+import secrets
 
 
 class TestRetriever(TestCase):
     def test_retrieve_non_existent_domain(self):
-        domain = ''.join(random.choice(string.ascii_lowercase) for _ in range(223)) + '.net'
+        domain = ''.join(secrets.SystemRandom().choice(string.ascii_lowercase) for _ in range(223)) + '.net'
         reqs = retrieve_all(domain)
 
         self.assertIsNone(reqs['responses']['auto'])
