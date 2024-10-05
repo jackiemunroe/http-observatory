@@ -46,7 +46,7 @@ def parse_http_equiv_headers(html: str) -> CaseInsensitiveDict:
 def retrieve_store_hsts_preload_list():
     # Download the Google HSTS Preload List
     try:
-        r = requests.get(HSTS_URL).text.split('\n')
+        r = requests.get(HSTS_URL, timeout=60).text.split('\n')
 
         # Remove all the comments
         r = ''.join([line.split('// ')[0] for line in r if line.strip() != '//'])
