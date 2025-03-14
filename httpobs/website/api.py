@@ -250,8 +250,8 @@ def api_get_scanner_stats():
             indent=4 if pretty else None,
             sort_keys=pretty,
             default=str,
-        )
-    )
+        ), 
+    {'Content-Type': 'application/json'})
 
     resp.mimetype = 'application/json'
 
